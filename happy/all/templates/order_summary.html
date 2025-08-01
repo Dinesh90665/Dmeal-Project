@@ -1,0 +1,256 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Order Summary - Dmeal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 30px;
+            color: #333;
+            font-size: 18px; /* base font bigger */
+        }
+        .container {
+            max-width: 750px;
+            background: #fff;
+            margin: 50px auto;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 40px;
+            font-size: 3rem;
+            font-weight: 800;
+        }
+        .user-info, .delivery-address {
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2980b9;
+        }
+        .user-info p, .delivery-address p {
+            font-size: 1.25rem;
+            margin: 8px 0;
+        }
+        .items-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .items-list li {
+            display: flex;
+            align-items: center;
+            background: #f0f4f7;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+            gap: 25px;
+        }
+        .items-list img {
+            width: 130px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-right: 25px;
+            border: 1.5px solid #ddd;
+            flex-shrink: 0;
+        }
+        .item-details {
+            flex-grow: 1;
+        }
+        .item-name {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        .item-qty-price {
+            font-size: 1.15rem;
+            color: #555;
+        }
+        .item-total {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: #27ae60;
+            min-width: 130px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .order-total {
+            text-align: right;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #27ae60;
+            margin-top: 45px;
+            border-top: 3px solid #2980b9;
+            padding-top: 25px;
+        }
+        form {
+            margin-top: 45px;
+            text-align: center;
+        }
+        button {
+            background-color: #27ae60;
+            border: none;
+            padding: 20px 50px;
+            color: white;
+            font-size: 22px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 700;
+            box-shadow: 0 5px 12px rgba(39, 174, 96, 0.5);
+        }
+        button:hover {
+            background-color: #1e8449;
+            box-shadow: 0 7px 16px rgba(30, 132, 73, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 25px;
+                font-size: 16px;
+            }
+            .container {
+                padding: 35px 40px;
+                max-width: 100%;
+                margin: 40px 15px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .user-info p, .delivery-address p {
+                font-size: 1.15rem;
+            }
+            .items-list li {
+                padding: 18px 20px;
+                gap: 18px;
+            }
+            .items-list img {
+                width: 110px;
+                height: 85px;
+                margin-right: 18px;
+            }
+            .item-name {
+                font-size: 1.5rem;
+            }
+            .item-qty-price {
+                font-size: 1rem;
+            }
+            .item-total {
+                font-size: 1.25rem;
+                min-width: 110px;
+            }
+            .order-total {
+                font-size: 2.4rem;
+                margin-top: 40px;
+                padding-top: 20px;
+            }
+            button {
+                padding: 18px 45px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 15px;
+                font-size: 15px;
+            }
+            .container {
+                padding: 30px 25px;
+                margin: 30px 10px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .user-info p, .delivery-address p {
+                font-size: 1.1rem;
+            }
+            .items-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 18px 15px;
+                gap: 15px;
+            }
+            .items-list img {
+                width: 100%;
+                height: auto;
+                margin-right: 0;
+                border-radius: 14px;
+            }
+            .item-total {
+                text-align: left;
+                margin-top: 10px;
+                min-width: auto;
+                font-size: 1.2rem;
+            }
+            .item-name {
+                font-size: 1.4rem;
+            }
+            .item-qty-price {
+                font-size: 1rem;
+            }
+            .order-total {
+                font-size: 2rem;
+                margin-top: 35px;
+                padding-top: 18px;
+            }
+            button {
+                width: 100%;
+                padding: 18px 0;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" role="main" aria-label="Order summary">
+        <h1>Order Summary</h1>
+
+        <section class="user-info" aria-label="User information">
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Phone:</strong> {{ phone }}</p>
+        </section>
+
+        <section class="delivery-address" aria-label="Delivery address">
+            <p><strong>Delivery Address:</strong></p>
+            <p>{{ address }}</p>
+        </section>
+
+        <ul class="items-list" aria-label="List of ordered items">
+            {% for item in items %}
+                <li>
+                    <img src="{% static 'all/images/' %}{{ item.image }}" alt="{{ item.name }}" />
+                    <div class="item-details">
+                        <div class="item-name">{{ item.name }}</div>
+                        <div class="item-qty-price">
+                            Qty: {{ item.quantity }} &nbsp;&nbsp;|&nbsp;&nbsp; Price: Rs. {{ item.price|floatformat:2 }}
+                        </div>
+                    </div>
+                    <div class="item-total" aria-label="Total price for {{ item.name }}">
+                        Rs. {{ item.price|multiply:item.quantity|floatformat:2 }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="order-total" aria-live="polite" aria-atomic="true">
+            Total: Rs. {{ total|floatformat:2 }}
+        </div>
+
+        <form method="post" action="{% url 'place_order' %}" aria-label="Place order form">
+            {% csrf_token %}
+            <button type="submit">Confirm and Place Order</button>
+        </form>
+    </div>
+</body>
+</html>

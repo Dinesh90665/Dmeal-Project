@@ -1,0 +1,159 @@
+.nams
+{
+    height: 700px;
+  background-image: url('cup-coffee-coffee-beans-black-background_910054-4520.jpg');
+    width: 800px;
+    margin: 6px;
+}
+
+.mn
+{
+    height: 200px;
+    margin-left: 50px;
+    width: 800px;
+    position: relative;
+    animation: move 2s infinite;
+}
+.men:hover
+{
+    color: aqua;
+}
+@keyframes move
+{
+    0%{left: 0px;};
+    50%{left:200px};
+    100%{left: 0px};
+}
+.mea
+{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: bisque;
+}
+.asa
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+    text-decoration: solid;
+    font-style: oblique;
+    color: blue;
+  
+}
+.mes
+{
+    color: aqua;
+}
+.mes:hover
+{
+    color: darkorange;
+}
+.bsa
+{
+    color: azure;
+}
+.bsa:hover
+{
+    color: blue;
+}
+.des
+{
+    height: 300px;
+    width: 800px;
+    display: flex;
+}
+.neh
+{
+    height: 300px;
+    width: 300px;
+}
+.ves
+{
+    height: 300px;
+    width: 300px;
+}
+/*************/
+.bew
+{
+height: 360px;
+width: 1200px;
+display: flex;
+
+}
+.hes
+{
+    height: 400px;
+    width: 400px;
+    background-color:rgb(151, 75, 21);
+    border-radius: 200px;
+}
+.bewq
+{
+    height: 720px;
+    background-position: center;
+    background-size: center;
+    border-radius: 13px;
+
+}
+.ma
+{
+    height: 360px;
+    width: 360px;
+    background-color: blueviolet;
+}
+.nes
+
+{
+    height:350px;
+    width: 350px;
+    border-radius: 175px;
+    background-color: azure;
+    background-image: url('food-menu-assortment.jpg');
+    background-size: cover;
+}
+
+.meq
+{
+    text-align: center;
+}
+.ms{
+text-align: center;
+}
+.veb
+{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-decoration: solid;
+    text-transform: capitalize;
+    color: blue;
+    text-align: center;
+    text-decoration: underline;
+}
+.veb:hover
+{
+    color: chocolate;
+}
+.quey
+{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+.bewq video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+   
+}
+.wes
+{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-left: 10px;
+    background-color: crimson;
+}
+@media(min-aspect-ratio: 16/9)
+{
+    .bewq video
+    {
+        width: 1900px;
+        height: 720px;    
+    }
+}

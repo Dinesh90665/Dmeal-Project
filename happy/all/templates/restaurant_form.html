@@ -1,0 +1,50 @@
+{% extends "admin_base.html" %}
+{% load static %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+
+<form method="POST" enctype="multipart/form-data" style="max-width: 500px;">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div style="margin-bottom: 15px;">
+        <label for="{{ form.name.id_for_label }}" style="font-weight: 600;">Name:</label><br>
+        {{ form.name.errors }}
+        {{ form.name }}
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label for="{{ form.place.id_for_label }}" style="font-weight: 600;">Place:</label><br>
+        {{ form.place.errors }}
+        {{ form.place }}
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label for="{{ form.description.id_for_label }}" style="font-weight: 600;">Description:</label><br>
+        {{ form.description.errors }}
+        {{ form.description }}
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label for="{{ form.facility.id_for_label }}" style="font-weight: 600;">Facility:</label><br>
+        {{ form.facility.errors }}
+        {{ form.facility }}
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label for="{{ form.image.id_for_label }}" style="font-weight: 600;">Image:</label><br>
+        {{ form.image.errors }}
+        {{ form.image }}
+        {% if form.instance.image %}
+            <div style="margin-top: 10px;">
+                <img src="{{ form.instance.image.url }}" alt="Current Image" style="width: 150px; border-radius: 8px;" />
+            </div>
+        {% endif %}
+    </div>
+
+    <button type="submit" style="background-color: #27ae60; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;">Save</button>
+    <a href="{% url 'restaurant_list' %}" style="margin-left: 15px; color: #2980b9; text-decoration: none;">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dmeal Introduction</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    .video-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .content-wrapper {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+      box-sizing: border-box;
+    }
+
+    .content {
+      max-width: 900px;
+      padding: 30px 40px;
+      box-sizing: border-box;
+    }
+
+    .content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .content p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .content p.highlight {
+      font-style: italic;
+      color: #ffd700;
+      margin-top: 30px;
+      text-shadow: 0 0 10px #000;
+    }
+
+    /* === Additional Styles === */
+    .baa {
+      height: 700px;
+      width: 1200px;
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      margin: 20px auto 0;
+      box-sizing: border-box;
+    }
+
+    @media (min-aspect-ratio: 16/9) {
+      .baa video {
+        width: 1900px;
+        height: 720px;    
+      }
+    }
+
+    .baa video {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    .west {
+      height: 700px;
+      width: 800px;  
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+
+    .westr {
+      height: 350px;
+      width: 350px;
+      background-color: azure;
+      border-radius: 175px;
+      background-image: url('{% static "all/images/6th (2).jpg" %}');
+      background-size: cover;
+      background-position: center;
+      margin: 10px auto;
+    }
+
+    .wes {
+      height: 400px;
+      width: 400px;
+      background-color: rgb(135, 82, 82);  
+      border-radius: 200px;
+      margin: 10px auto;
+    }
+
+    .qwad {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      color: aqua;
+    }
+
+    .ne {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      color: azure;
+    }
+
+    .be {
+      margin-left: 200px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      color: aqua;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 1024px) {
+      .baa {
+        width: 95%;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .west {
+        width: 90%;
+        height: auto;
+      }
+
+      .westr, .wes {
+        width: 70vw;
+        max-width: 350px;
+        height: auto;
+        border-radius: 50%;
+        margin: 15px auto;
+      }
+
+      .be {
+        margin-left: 0;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        padding: 20px 15px;
+      }
+
+      .content h1 {
+        font-size: 2rem;
+      }
+
+      .content p {
+        font-size: 1rem;
+      }
+
+      .westr, .wes {
+        width: 80vw;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .content h1 {
+        font-size: 1.6rem;
+      }
+
+      .content p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="video-background">
+    <video autoplay loop muted playsinline>
+      <source src="{% static 'all/images/3620671147-preview.mp4' %}" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>Introduction</h1>
+      <p>Hello everyone, first of all I would like to thank all my supporters and well-wishers who helped me organize this restaurant. Coming from a poor family, where all members depend on one person—my father—it’s difficult to manage everything with limited income.</p>
+
+      <p>My name is Dinesh Aidee, 20 years old, currently studying BE in Computer Engineering at Pokhara University. My aim is to become an engineer, which is also my father's dream. Despite financial difficulties, my family took a loan to support my education.</p>
+
+      <p>Alongside my studies, I wanted to support my family and gain experience. With advice from seniors, I decided to start something in the hospitality field. This led to the idea of opening a restaurant where both locals and tourists could benefit.</p>
+
+      <p>Nepal is rich in natural beauty and attracts many tourists every year. However, in some places, tourist facilities are lacking. I believe opening a restaurant there can benefit both tourists and local communities.</p>
+
+      <p>Through "Dmeal Restaurant", I aim to provide great service and contribute to tourism development. I am confident that this initiative will be helpful for everyone involved.</p>
+
+      <p class="highlight">"We look forward to welcoming you and making your dining experience truly exceptional."</p>
+    </div>
+  </div>
+</body>
+</html>

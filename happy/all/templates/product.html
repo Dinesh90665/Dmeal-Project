@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurants - Dmeal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .restaurant-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .restaurant-card {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .restaurant-card:hover {
+      transform: scale(1.02);
+    }
+
+    .restaurant-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .restaurant-content {
+      padding: 15px;
+    }
+
+    .restaurant-content h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #222;
+    }
+
+    .restaurant-content p {
+      margin: 5px 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .restaurant-content h2 {
+        font-size: 18px;
+      }
+
+      .restaurant-content p {
+        font-size: 13px;
+      }
+
+      .restaurant-image img {
+        height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+{% load static %}
+<h1>Select a Restaurant</h1>
+<div class="restaurant-grid">
+  {% for r in restaurants %}
+  {% comment %} <a href="{% url 'restaurant_detail' r.id %}" style="text-decoration: none; color: inherit;"> {% endcomment %}
+    <div class="restaurant-card">
+      <div class="restaurant-image">
+        <img src="{% static 'all/images/' %}{{ r.image }}" alt="{{ r.name }}">
+      </div>
+      <div class="restaurant-content">
+        <h2>{{ r.name }}</h2>
+        <p><strong>Description:</strong> {{ r.description }}</p>
+        <p><strong>Place:</strong> {{ r.place }}</p>
+        <p><strong>Facility:</strong> {{ r.facility }}</p>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+
+</body>
+</html>

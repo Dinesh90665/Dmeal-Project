@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy - Dmeal Restaurant</title>
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #f4f6f8;
+      color: #333;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    nav {
+      background: #222; /* dark background */
+      padding: 1rem 2rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 2rem;
+      scrollbar-width: none;
+      justify-content: center;
+    }
+    nav ul::-webkit-scrollbar {
+      display: none;
+    }
+    nav ul li {
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.3rem 0.6rem;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #ffd700;
+      text-decoration: underline;
+    }
+
+    /* Container */
+    .container {
+      max-width: 800px;
+      margin: 2rem auto 4rem;
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Heading + intro paragraph container */
+    .header-section {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .header-section h1 {
+      color: #4e54c8;
+      font-size: 2.4rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .header-section p {
+      font-size: 1.05rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Privacy points */
+    .container p.policy-point {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: #444;
+    }
+
+    .container strong {
+      color: #4e54c8;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav ul {
+        gap: 1rem;
+      }
+      nav ul li a {
+        font-size: 1rem;
+      }
+      .container {
+        margin: 1rem;
+        padding: 1.5rem 1.8rem;
+      }
+      .header-section h1 {
+        font-size: 1.8rem;
+      }
+      .header-section p {
+        max-width: 100%;
+        font-size: 1rem;
+      }
+      .container p.policy-point {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'terms' %}">Terms</a></li>
+      <li><a href="{% url 'privacy' %}" class="active">Privacy</a></li>
+      <li><a href="{% url 'security' %}">Security</a></li>
+    </ul>
+  </nav>
+
+  <main class="container" role="main" aria-label="Privacy Policy">
+    <div class="header-section">
+      <h1>Privacy Policy</h1>
+      <p>
+        At Dmeal Restaurant, your privacy is important to us. This policy explains how we collect, use, and protect your personal data when you dine with us or use our services.
+      </p>
+    </div>
+
+    <p class="policy-point"><strong>1. Information We Collect:</strong> We may collect your name, contact details, payment information, and order preferences when you make a reservation, place an order, or sign up for promotions.</p>
+
+    <p class="policy-point"><strong>2. How We Use Your Information:</strong> Your data is used to process your orders, manage reservations, improve customer service, and send you promotional materials (if you opt-in).</p>
+
+    <p class="policy-point"><strong>3. Data Security:</strong> We take reasonable measures to protect your information from unauthorized access, alteration, or disclosure.</p>
+
+    <p class="policy-point"><strong>4. Sharing Your Data:</strong> We do not sell or trade your personal information. We may share data with trusted third parties only to provide services like payment processing or delivery.</p>
+
+    <p class="policy-point"><strong>5. Cookies and Tracking:</strong> Our website may use cookies to enhance your browsing experience and collect usage data. You can disable cookies via your browser settings.</p>
+
+    <p class="policy-point"><strong>6. Your Rights:</strong> You may access, update, or request deletion of your personal information by contacting us directly.</p>
+
+    <p class="policy-point"><strong>7. Children’s Privacy:</strong> We do not knowingly collect personal information from children under 13 years old.</p>
+
+    <p class="policy-point"><strong>8. Changes to This Policy:</strong> We may update our privacy policy occasionally. Updated versions will be posted here.</p>
+
+    <p>If you have questions about our privacy practices, please contact us at info@dmeal.com or +977-98XXXXXXXX.</p>
+
+  </main>
+
+</body>
+</html>

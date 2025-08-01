@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ restaurant.name }} - Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 10px; }
+    .restaurant-header img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .restaurant-info {
+      margin-top: 15px;
+    }
+    .menu-section {
+      margin-top: 30px;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .qty-controls button {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="restaurant-header">
+    <img src="{% static 'all/images/' %}{{ restaurant.image }}" alt="{{ restaurant.name }}">
+  </div>
+
+  <div class="restaurant-info">
+    <h2>{{ restaurant.name }}</h2>
+    <p><strong>Description:</strong> {{ restaurant.description }}</p>
+    <p><strong>Place:</strong> {{ restaurant.place }}</p>
+    <p><strong>Facility:</strong> {{ restaurant.facility }}</p>
+  </div>
+
+  <div class="menu-section">
+    <h3>Menu Items</h3>
+    {% for item in menu_items %}
+    <div class="menu-item">
+      <div>
+        <strong>{{ item.name }}</strong><br>
+        ₹{{ item.price }}
+      </div>
+      <div class="qty-controls">
+        <button onclick="decrease('{{ item.id }}')">–</button>
+        <span id="qty-{{ item.id }}">0</span>
+        <button onclick="increase('{{ item.id }}')">+</button>
+        <button onclick="addToCart('{{ item.id }}')">Add to Cart</button>
+      </div>
+    </div>
+    {% empty %}
+    <p>No menu items available.</p>
+    {% endfor %}
+  </div>
+
+  <script>
+    const quantities = {};
+
+    function increase(id) {
+      quantities[id] = (quantities[id] || 0) + 1;
+      document.getElementById('qty-' + id).innerText = quantities[id];
+    }
+
+    function decrease(id) {
+      if (quantities[id] > 0) {
+        quantities[id]--;
+        document.getElementById('qty-' + id).innerText = quantities[id];
+      }
+    }
+
+    function addToCart(id) {
+      const qty = quantities[id] || 0;
+      if (qty > 0) {
+        alert(`Added ${qty} item(s) of ID ${id} to cart`);
+        // You can later connect this with Django session or cart logic
+      } else {
+        alert('Please select quantity');
+      }
+    }
+  </script>
+
+</body>
+</html>

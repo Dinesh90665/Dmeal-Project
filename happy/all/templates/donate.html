@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate to Feeding Nepal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+      padding: 10px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .qr-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .qr-section img {
+      width: 180px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    button {
+      background-color: #000;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 16px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      input,
+      button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Support Feeding Nepal</h2>
+    <img src="{% static 'all/images/kids.jpg' %}" alt="Helping Kids" class="hero-image">
+
+    <form method="post" action="{% url 'donate' %}">
+      {% csrf_token %}
+      <label for="name">Full Name</label>
+      <input type="text" name="name" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="text" name="phone" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" name="email" required>
+
+      <label for="amount">Donate Amount (in ₹)</label>
+      <input type="number" name="amount" min="1" required>
+
+      <div class="qr-section">
+        <label>Scan to Pay (Bank QR)</label><br>
+        <img src="{% static 'all/images/qr.jpg' %}" alt="Scan and Pay">
+      </div>
+
+      <button type="submit">Confirm Donation</button>
+    </form>
+  </div>
+
+</body>
+</html>

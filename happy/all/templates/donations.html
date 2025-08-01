@@ -1,0 +1,79 @@
+{% extends "admin_base.html" %}
+{% load static %}
+{% block title %}Donations{% endblock %}
+
+{% block content %}
+<style>
+  .donation-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: flex-start;
+  }
+
+  .donation-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    width: calc(50% - 20px); /* Two per row */
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .donation-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .donation-card h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: #2c3e50;
+  }
+
+  .donation-card p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .donation-actions {
+    margin-top: 10px;
+  }
+
+  .donation-actions a {
+    font-size: 13px;
+    margin-right: 10px;
+    color: #c0392b;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .donation-card {
+      width: 100%;
+    }
+  }
+</style>
+
+<h2 style="margin-bottom: 10px;">All Donations</h2>
+
+{% if donations %}
+<div class="donation-grid">
+  {% for donation in donations %}
+  <div class="donation-card">
+    <h3>{{ donation.name }}</h3>
+    <p><strong>ID:</strong> {{ donation.id }}</p>
+    <p><strong>Phone:</strong> {{ donation.phone }}</p>
+    <p><strong>Email:</strong> {{ donation.email }}</p>
+    <p><strong>Amount:</strong> ₹{{ donation.amount }}</p>
+    <div class="donation-actions">
+      <a href="{% url 'delete_donation' donation.id %}" onclick="return confirm('Are you sure you want to delete this donation?')">🗑️ Delete</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p style="margin-top: 20px;">No donations found.</p>
+{% endif %}
+{% endblock %}

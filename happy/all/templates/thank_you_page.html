@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You - Dmeal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #2c3e50;
+    }
+    .thank-you-container {
+      background: white;
+      padding: 3rem 4rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      text-align: center;
+      max-width: 450px;
+      width: 90%;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: #27ae60;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+    a.btn-home {
+      display: inline-block;
+      background-color: #4e54c8;
+      color: white;
+      padding: 12px 32px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(78, 84, 200, 0.7);
+      transition: background-color 0.3s ease;
+    }
+    a.btn-home:hover {
+      background-color: #3a3e9e;
+    }
+
+    @media (max-width: 480px) {
+      .thank-you-container {
+        padding: 2rem 2.5rem;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      a.btn-home {
+        padding: 10px 24px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="thank-you-container" role="main" aria-label="Thank You message">
+    <h1>Thank You!</h1>
+    <p>Your review has been successfully submitted.<br/>We appreciate your feedback and support!</p>
+    <a href="{% url 'about' %}" class="btn-home" aria-label="Go back to homepage">Back to Home</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Preferences</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #666;
+            margin: 0;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .toggle-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background-color: #2e7d32; /* Green for active state */
+        }
+
+        .toggle-switch.active::before {
+            transform: translateX(20px); /* Move the toggle to the right */
+        }
+
+        .save-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .save-button:hover {
+            background-color: #d0d0d0;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .container {
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            .toggle-container {
+                margin-top: 10px;
+            }
+
+            .save-button {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <h1>Notification Preferences</h1>
+
+        <!-- Section 1: When you get likes and comments -->
+        <div class="section">
+            <p>when you get likes and comments on reviews and photos posted by you</p>
+            <div class="toggle-container">
+                <div class="toggle-label">
+                    <span class="icon-email">&#9993;</span>
+                    <span>Email</span>
+                </div>
+                <label class="toggle-switch" id="email-toggle" onclick="toggleSwitch('email')"></label>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle-label">
+                    <span class="icon-push">&#9881;</span>
+                    <span>Push</span>
+                </div>
+                <label class="toggle-switch" id="push-toggle" onclick="toggleSwitch('push')"></label>
+            </div>
+        </div>
+
+        <!-- Section 2: Orders and purchases -->
+        <div class="section">
+            <h2>Orders and purchases</h2>
+            <p>Receive updates related to your order status, memberships, table bookings and more</p>
+            <div class="toggle-container">
+                <div class="toggle-label">
+                    <span class="icon-email">&#9993;</span>
+                    <span>Email</span>
+                </div>
+                <label class="toggle-switch" id="orders-email-toggle" onclick="toggleSwitch('orders-email')"></label>
+            </div>
+            <div class="toggle-container">
+                <div class="toggle-label">
+                    <span class="icon-push">&#9881;</span>
+                    <span>Push</span>
+                </div>
+                <label class="toggle-switch" id="orders-push-toggle" onclick="toggleSwitch('orders-push')"></label>
+            </div>
+        </div>
+
+        <!-- Section 3: Important updates -->
+        <div class="section">
+            <h2>Important updates</h2>
+            <p>Receive important updates related to your account</p>
+            <div class="toggle-container">
+                <div class="toggle-label">
+                    <span class="icon-email">&#9993;</span>
+                    <span>Email</span>
+                </div>
+                <label class="toggle-switch" id="important-email-toggle" onclick="toggleSwitch('important-email')"></label>
+            </div>
+        </div>
+
+        <!-- Save Changes Button -->
+        <button class="save-button">Save Changes</button>
+    </div>
+
+    <script>
+        // JavaScript to handle toggle switches
+        function toggleSwitch(id) {
+            const toggle = document.getElementById(`${id}-toggle`);
+            toggle.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

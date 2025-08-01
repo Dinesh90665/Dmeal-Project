@@ -1,0 +1,106 @@
+{% extends "admin_base.html" %}
+{% load static %}
+{% block title %}Menu Items{% endblock %}
+
+{% block content %}
+<style>
+  .menu-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: flex-start;
+  }
+
+  .menu-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    width: calc(50% - 20px); /* 2 per row */
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .menu-item:hover {
+    transform: translateY(-4px);
+  }
+
+  .menu-item img {
+    width: 100%;
+    height: 160px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .menu-item h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+  }
+
+  .menu-item p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .menu-actions {
+    margin-top: 10px;
+  }
+
+  .menu-actions a {
+    margin-right: 10px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .edit {
+    color: #2980b9;
+  }
+
+  .delete {
+    color: #c0392b;
+  }
+
+  .add-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 18px;
+    background-color: #27ae60;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .menu-item {
+      width: 100%; /* Single row on small screens */
+    }
+  }
+</style>
+
+<h2 style="margin-bottom: 10px;">All Menu Items</h2>
+<a href="{% url 'add_menu_item' %}" class="add-btn">➕ Add New Item</a>
+
+{% if items %}
+<div class="menu-grid">
+  {% for item in items %}
+  <div class="menu-item">
+    <img src="{% static 'all/images/'|add:item.image %}" alt="{{ item.name }}">
+    <h3>{{ item.name }}</h3>
+    <p><strong>ID:</strong> {{ item.id }}</p>
+    <p><strong>Price:</strong> ₹{{ item.price }}</p>
+    <p><strong>Description:</strong> {{ item.description }}</p>
+    <div class="menu-actions">
+      <a href="{% url 'edit_menu_item' item.id %}" class="edit">✏️ Edit</a>
+      <a href="{% url 'delete_menu_item' item.id %}" class="delete" onclick="return confirm('Are you sure?')">🗑️ Delete</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p style="margin-top: 20px;">No menu items found.</p>
+{% endif %}
+{% endblock %}

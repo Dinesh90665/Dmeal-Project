@@ -1,0 +1,234 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Review Section</title>
+  <style>
+    body.Review {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0; padding: 0;
+      background-color: #f4f6f8;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1.main-title {
+      font-size: 3rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+    }
+
+    .image-section {
+      position: relative;
+      background: url("{% static 'all/images/6th_3.jpg' %}") no-repeat center center/cover;
+      border-radius: 12px;
+      min-height: 480px;
+      margin-bottom: 2rem;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .image-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.35); /* less dark overlay */
+      border-radius: 12px;
+      z-index: 1;
+    }
+
+    .overlay-text {
+      position: relative;
+      z-index: 2;
+      max-width: 90%;
+      font-size: 1.8rem;
+      font-style: italic;
+      line-height: 1.6;
+      white-space: normal;
+      color: #fff;
+      padding: 0 1rem;
+      word-break: break-word;
+    }
+
+    form.review-form {
+      background-color: white;
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.8rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      font-size: 1.1rem;
+      color: #4e54c8;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1.8px solid #ccc;
+      font-family: 'Segoe UI', sans-serif;
+      resize: vertical;
+    }
+
+    input[type="text"]:focus, textarea:focus {
+      border-color: #4e54c8;
+      outline: none;
+      box-shadow: 0 0 6px rgba(78, 84, 200, 0.5);
+    }
+
+    textarea {
+      min-height: 120px;
+      max-height: 300px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .radio-group label {
+      font-weight: 500;
+      color: #555;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .radio-group input[type="radio"] {
+      margin-right: 0.4rem;
+      accent-color: #4e54c8;
+      cursor: pointer;
+    }
+
+    button.submit-btn {
+      background-color: #4e54c8;
+      color: white;
+      font-size: 1.3rem;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+      display: block;
+      margin: 2rem auto 0;
+      box-shadow: 0 5px 14px rgba(78, 84, 200, 0.7);
+    }
+
+    button.submit-btn:hover {
+      background-color: #3a3e9e;
+    }
+
+    @media (max-width: 768px) {
+      h1.main-title {
+        font-size: 2.4rem;
+      }
+      .image-section {
+        min-height: 360px;
+        padding: 0 1.5rem;
+      }
+      .overlay-text {
+        font-size: 1.4rem;
+        max-width: 100%;
+      }
+      form.review-form {
+        padding: 1.5rem 1.8rem;
+      }
+      button.submit-btn {
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 14px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1.main-title {
+        font-size: 2rem;
+      }
+      .image-section {
+        min-height: 280px;
+        padding: 0 1rem;
+      }
+      .overlay-text {
+        font-size: 1.2rem;
+      }
+      form.review-form {
+        padding: 1rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body class="Review">
+
+<div class="container" role="main" aria-label="Review Section">
+
+  <h1 class="main-title">Review Section</h1>
+
+  <section class="image-section" aria-label="Review encouragement message with background image">
+    <div class="overlay-text">
+      <p>
+        <i>
+          This is the review section where you can give your honest feedback. Good or bad, your review helps us improve and grow. Only encouragement can help us reach a higher level. Thank you for sharing your thoughts with us.
+        </i>
+      </p>
+    </div>
+  </section>
+
+  <form class="review-form" method="POST" action="{% url 'submit_review' %}" aria-label="Submit your review">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="id_name">Name</label>
+      <input type="text" id="id_name" name="name" placeholder="Enter your name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="id_phone">Phone</label>
+      <input type="text" id="id_phone" name="phone" placeholder="Enter your phone number" required pattern="\d{10,15}" title="Enter a valid phone number" />
+    </div>
+
+    <div class="form-group">
+      <label>Designation</label>
+      <div class="radio-group" role="radiogroup">
+        <label><input type="radio" name="designation" value="Mr" required /> Mr</label>
+        <label><input type="radio" name="designation" value="Ms" /> Ms</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="id_review">Your Review</label>
+      <textarea id="id_review" name="review" placeholder="Write your review here..." required minlength="10"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit Review</button>
+  </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Impact</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: #f4f4f4;
+      color: #222;
+      padding: 16px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .section {
+      background-color: #fff;
+      padding: 16px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 16px;
+    }
+
+    .center-text {
+      text-align: center;
+    }
+
+    .big-text {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .sub-text {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      background-color: #000;
+      color: #fff;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .impact-gallery {
+      display: flex;
+      overflow-x: auto;
+      gap: 12px;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 10px;
+      margin-top: 12px;
+    }
+
+    .impact-card {
+      min-width: 200px;
+      flex-shrink: 0;
+      position: relative;
+      scroll-snap-align: start;
+    }
+
+    .impact-card img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 8px;
+      left: 12px;
+      right: 12px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      text-shadow: 0 0 5px rgba(0,0,0,0.6);
+    }
+
+    .thanks {
+      text-align: center;
+    }
+
+    .thanks img {
+      width: 48px;
+      margin-bottom: 12px;
+    }
+
+    .thanks h3 {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .thanks p {
+      font-size: 14px;
+      color: #555;
+      margin-top: 6px;
+    }
+
+    @media screen and (max-width: 480px) {
+      .btn {
+        font-size: 15px;
+        padding: 10px;
+      }
+      .big-text {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Your Feeding Nepal impact</h2>
+
+  <!-- Hero Section -->
+  <div class="section center-text">
+    <img src="{% static 'all/images/kids.jpg' %}" alt="Kids Eating" class="hero-image" />
+    <div class="big-text">You're yet to start your Feeding Nepal journey</div>
+    <div class="sub-text">Start by contributing today</div>
+   <a href="{% url 'donate' %}">
+  <button class="btn">Donate to Feeding Nepal</button>
+</a>
+
+
+  </div>
+
+  <!-- Impact Carousel Section -->
+  <div class="section">
+    <div class="big-text">Where we create impact</div>
+    <div class="sub-text">with the Daily Feeding Program across Nepal</div>
+    <div class="impact-gallery">
+
+      <div class="impact-card">
+        <img src="{% static 'all/images/fed1.jpg' %}" alt="SHED" />
+        <div class="caption">Food for life Nepal<br><small>pokhara</small></div>
+      </div>
+
+      <div class="impact-card">
+        <img src="{% static 'all/images/fed2.jpg' %}" alt="Vidya" />
+        <div class="caption">Feeding program<br><small>Rukum</small></div>
+      </div>
+
+      <div class="impact-card">
+        <img src="{% static 'all/images/fed3.jpg' %}" alt="Akhil Bharat" />
+        <div class="caption">Feeding for hungry child<br><small>Rolpa</small></div>
+      </div>
+
+      <div class="impact-card">
+        <img src="{% static 'all/images/fed6.jpg' %}" alt="Kids Help" />
+        <div class="caption">Feeding for poor old people<br><small>palpa</small></div>
+      </div>
+
+      <div class="impact-card">
+        <img src="{% static 'all/images/fed5.jpg' %}" alt="Helping Hands" />
+        <div class="caption">Feeding in village<br><small>maldives</small></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Thanks Section -->
+  <div class="section thanks">
+    <img src="{% static 'all/images/thank.jpg' %}" alt="Thank you" />
+    <h3>Thanks to supporters like you</h3>
+    <p>We have been able to create significant impact</p>
+  </div>
+
+</body>
+</html>

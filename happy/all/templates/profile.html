@@ -1,0 +1,251 @@
+{% extends "job.html" %}
+{% load static %}
+
+{% block title %}My Account{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    padding: 16px;
+    color: #222;
+  }
+
+  .account-wrapper {
+    max-width: 420px;
+    margin: 20px auto 0;
+  }
+
+  .header-card {
+    background: #fefefe;
+    border-radius: 16px;
+    padding: 18px 16px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 16px;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .profile-pic {
+    background: #3b82f6;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 26px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+  }
+
+  .header-text h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+
+  .header-text p {
+    margin: 4px 0 0;
+    color: #555;
+    font-size: 0.95rem;
+  }
+
+  .view-activity {
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #2563eb;
+    cursor: pointer;
+  }
+
+  .section-card {
+    background: #fefefe;
+    border-radius: 16px;
+    padding: 0;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+  }
+
+  .section-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .section-item:hover {
+    background-color: #f0f4ff;
+  }
+
+  .section-item:last-child {
+    border-bottom: none;
+  }
+
+  .section-icon {
+    font-size: 1.4rem;
+    margin-right: 14px;
+    color: #2563eb;
+    min-width: 30px;
+    text-align: center;
+  }
+
+  .section-text {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #111;
+    flex: 1;
+  }
+
+  .arrow-right {
+    font-size: 1rem;
+    color: #999;
+  }
+
+  .section-header {
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 0 20px 8px;
+    color: #b91c1c;
+  }
+
+  .sub-items {
+    display: none;
+    flex-direction: column;
+  }
+
+  .sub-items.show {
+    display: flex;
+  }
+
+  .sub-item {
+    padding-left: 54px !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    color: #444;
+  }
+
+  .sub-item .section-icon {
+    font-size: 1.1rem;
+    color: #aaa !important;
+  }
+
+  .sub-item .arrow-right {
+    color: #aaa !important;
+  }
+</style>
+
+<div class="account-wrapper">
+  <!-- Profile Header -->
+  <div class="header-card">
+    <div class="header-top">
+      <div class="profile-pic">{{ user.username|slice:":1"|upper }}</div>
+      <div class="header-text">
+        <h2>{{ user.username }}</h2>
+        <p>{{ user.email }}</p>
+        <div class="view-activity" onclick="window.location.href='{% url 'view_activity' %}'">View activity &gt;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feeding Nepal -->
+  <div class="section-card">
+    <div class="section-item" id="feedingNepalToggle">
+      <div class="section-icon"><i class="fas fa-hands-helping"></i></div>
+      <div class="section-text">Feeding Nepal</div>
+      <div class="arrow-right" id="feedingNepalArrow">&gt;</div>
+    </div>
+    <div class="sub-items" id="feedingNepalSubs">
+      <div class="section-item sub-item" onclick="window.location.href='{% url 'feed_nepal' %}'">
+        <div class="section-icon"><i class="fas fa-seedling"></i></div>
+        <div class="section-text">Feed Nepal</div>
+        <div class="arrow-right">&gt;</div>
+      </div>
+      <div class="section-item sub-item" onclick="window.location.href='{% url 'help_people' %}'">
+        <div class="section-icon"><i class="fas fa-hands"></i></div>
+        <div class="section-text">Help people</div>
+        <div class="arrow-right">&gt;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dmeal for Enterprises -->
+  <div class="section-card">
+    <div class="section-item" id="dmealEnterprisesToggle">
+      <div class="section-icon"><i class="fas fa-building"></i></div>
+      <div class="section-text">Dmeal for Enterprises</div>
+      <div class="arrow-right" id="dmealEnterprisesArrow">&gt;</div>
+    </div>
+    <div class="sub-items" id="dmealEnterprisesSubs">
+      <div class="section-item sub-item" onclick="window.location.href='{% url 'employers' %}'">
+        <div class="section-icon"><i class="fas fa-user-tie"></i></div>
+        <div class="section-text">Employers</div>
+        <div class="arrow-right">&gt;</div>
+      </div>
+      <div class="section-item sub-item" onclick="window.location.href='{% url 'employees' %}'">
+        <div class="section-icon"><i class="fas fa-users"></i></div>
+        <div class="section-text">Employees</div>
+        <div class="arrow-right">&gt;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- More -->
+  <div class="section-header">More</div>
+  <div class="section-card">
+    <div class="section-item" onclick="window.location.href='{% url 'make' %}'">
+      <div class="section-icon"><i class="fas fa-info-circle"></i></div>
+      <div class="section-text">About</div>
+      <div class="arrow-right">&gt;</div>
+    </div>
+    <div class="section-item" onclick="window.location.href='{% url 'send_feedback' %}'">
+      <div class="section-icon"><i class="fas fa-pen-nib"></i></div>
+      <div class="section-text">Send feedback</div>
+      <div class="arrow-right">&gt;</div>
+    </div>
+    <div class="section-item" onclick="window.location.href='{% url 'report_safety' %}'">
+      <div class="section-icon"><i class="fas fa-exclamation-triangle"></i></div>
+      <div class="section-text">Report a safety emergency</div>
+      <div class="arrow-right">&gt;</div>
+    </div>
+    <div class="section-item" onclick="window.location.href='{% url 'set' %}'">
+      <div class="section-icon"><i class="fas fa-cog"></i></div>
+      <div class="section-text">Settings</div>
+      <div class="arrow-right">&gt;</div>
+    </div>
+    <div class="section-item" onclick="location.href='{% url 'login' %}'">
+      <div class="section-icon"><i class="fas fa-power-off"></i></div>
+      <div class="section-text">Log out</div>
+      <div class="arrow-right">&gt;</div>
+    </div>
+  </div>
+</div>
+
+<!-- FontAwesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<script>
+  function toggleSection(toggleId, subsId, arrowId) {
+    const subs = document.getElementById(subsId);
+    const arrow = document.getElementById(arrowId);
+    subs.classList.toggle('show');
+    arrow.classList.toggle('arrow-down');
+  }
+
+  document.getElementById('feedingNepalToggle').addEventListener('click', () =>
+    toggleSection('feedingNepalToggle', 'feedingNepalSubs', 'feedingNepalArrow')
+  );
+
+  document.getElementById('dmealEnterprisesToggle').addEventListener('click', () =>
+    toggleSection('dmealEnterprisesToggle', 'dmealEnterprisesSubs', 'dmealEnterprisesArrow')
+  );
+</script>
+{% endblock %}

@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms and Conditions - Dmeal</title>
+  <style>
+    /* Reset and base */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #f4f6f8;
+      color: #333;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    nav {
+      background: #222; /* dark background */
+      padding: 1rem 2rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 2rem;
+      scrollbar-width: none;
+      justify-content: center;
+    }
+    nav ul::-webkit-scrollbar {
+      display: none;
+    }
+    nav ul li {
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.3rem 0.6rem;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #ffd700;
+      text-decoration: underline;
+    }
+
+    /* Container */
+    .container {
+      max-width: 800px;
+      margin: 2rem auto 4rem;
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Heading + intro paragraph container */
+    .header-section {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .header-section h1 {
+      color: #4e54c8;
+      font-size: 2.4rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .header-section p {
+      font-size: 1.05rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Terms points */
+    .container p.term-point {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: #444;
+    }
+
+    .container strong {
+      color: #4e54c8;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav ul {
+        gap: 1rem;
+      }
+      nav ul li a {
+        font-size: 1rem;
+      }
+      .container {
+        margin: 1rem;
+        padding: 1.5rem 1.8rem;
+      }
+      .header-section h1 {
+        font-size: 1.8rem;
+      }
+      .header-section p {
+        max-width: 100%;
+        font-size: 1rem;
+      }
+      .container p.term-point {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Primary navigation">
+    <ul>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'terms' %}" class="active">Terms</a></li>
+      <li><a href="{% url 'privacy' %}">Privacy</a></li>
+      <li><a href="{% url 'security' %}">Security</a></li>
+    </ul>
+  </nav>
+
+  <main class="container" role="main" aria-label="Terms and Conditions">
+    <div class="header-section">
+      <h1>Terms and Conditions</h1>
+      <p>
+        These terms and conditions govern your dining and ordering experience with Dmeal Restaurant. Please read carefully before using our services.
+      </p>
+    </div>
+
+    <p class="term-point"><strong>1. Reservations:</strong> We recommend booking in advance. Please cancel at least 24 hours ahead to avoid fees.</p>
+
+    <p class="term-point"><strong>2. Menu & Pricing:</strong> Menu items may vary and prices are subject to change.</p>
+
+    <p class="term-point"><strong>3. Allergies:</strong> Inform staff about allergies. We cannot guarantee allergen-free meals.</p>
+
+    <p class="term-point"><strong>4. Payment:</strong> Payment is due upon service. We accept cash and cards.</p>
+
+    <p class="term-point"><strong>5. Conduct:</strong> Respectful behavior is expected. Disruptive guests may be asked to leave.</p>
+
+    <p class="term-point"><strong>6. Liability:</strong> We are not responsible for lost personal items or allergic reactions.</p>
+
+    <p class="term-point"><strong>7. Delivery & Takeaway:</strong> Delivery times may vary. Check your order upon receipt.</p>
+
+    <p>For any questions, contact us at info@dmeal.com or +977-98XXXXXXXX.</p>
+
+  </main>
+
+</body>
+</html>

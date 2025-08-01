@@ -1,0 +1,86 @@
+{% extends "admin_base.html" %}
+{% load static %}
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+<h2 style="font-size: 24px; margin-bottom: 20px; font-weight: 600;">All Orders</h2>
+
+<style>
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  table.orders-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 600px;
+    font-size: 16px;
+  }
+
+  table.orders-table thead {
+    background-color: #198754;
+    color: #fff;
+  }
+
+  table.orders-table th,
+  table.orders-table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+
+  table.orders-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  table.orders-table tbody tr:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  table.orders-table th:first-child,
+  table.orders-table td:first-child {
+    border-top-left-radius: 8px;
+  }
+
+  table.orders-table th:last-child,
+  table.orders-table td:last-child {
+    border-top-right-radius: 8px;
+  }
+
+  @media (max-width: 768px) {
+    table.orders-table {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<div class="table-wrapper">
+  <table class="orders-table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>User</th>
+        <th>Total</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <td>#{{ order.id }}</td>
+        <td>{{ order.user.username }}</td>
+        <td>₹{{ order.total }}</td>
+        <td>{{ order.created_at|date:"Y-m-d H:i" }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" style="text-align: center; padding: 20px;">No orders found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

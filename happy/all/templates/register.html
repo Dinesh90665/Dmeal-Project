@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Register - Dmeal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-image: url('https://codetheweb.blog/assets/img/posts/css-advanced-background-images/mountains.jpg');
+      background-size: cover;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .form-box {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      max-width: 400px;
+      margin: 100px auto;
+      border-radius: 8px;
+    }
+    .form-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: none;
+    }
+    .form-box button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .form-box button:hover {
+      background-color: #218838;
+    }
+    .form-box a {
+      color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Register for Dmeal</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+  </div>
+</body>
+</html>

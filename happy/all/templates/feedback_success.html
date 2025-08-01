@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Submitted</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f8f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .success-message {
+      background-color: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+
+    .success-message h2 {
+      color: #28a745;
+      margin-bottom: 10px;
+    }
+
+    .success-message p {
+      color: #555;
+      font-size: 16px;
+    }
+
+    @media screen and (max-width: 600px) {
+      .success-message {
+        padding: 18px;
+      }
+
+      .success-message h2 {
+        font-size: 20px;
+      }
+
+      .success-message p {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="success-message">
+    <h2>Thank You!</h2>
+    <p>Your feedback has been submitted successfully.</p>
+  </div>
+</body>
+</html>

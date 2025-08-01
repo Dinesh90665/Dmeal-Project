@@ -1,0 +1,9 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<h2>{{ title }}</h2>
+<form method="POST" enctype="multipart/form-data" style="margin-top: 20px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" style="padding: 10px 20px; background: #27ae60; color: white; border: none; border-radius: 6px;">Save</button>
+</form>
+{% endblock %}

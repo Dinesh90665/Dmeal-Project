@@ -1,0 +1,149 @@
+{% extends "admin_base.html" %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<style>
+    .dashboard-container {
+        padding: 30px;
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .welcome-text {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #2c3e50;
+        animation: slideDown 0.7s ease-in-out;
+        text-align: center;
+    }
+
+    .dashboard-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        padding: 20px 18px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+        animation: slideUp 0.5s ease forwards;
+        opacity: 0;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-title {
+        font-size: 18px;
+        color: #34495e;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .card-value {
+        font-size: 28px;
+        font-weight: 700;
+        color: #2c3e50;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+        from { transform: translateY(-20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+        .dashboard-container {
+            padding: 20px;
+        }
+
+        .welcome-text {
+            font-size: 24px;
+        }
+
+        .card-title {
+            font-size: 16px;
+        }
+
+        .card-value {
+            font-size: 24px;
+        }
+
+        .card {
+            padding: 18px 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .dashboard-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .welcome-text {
+            font-size: 22px;
+        }
+
+        .card-title {
+            font-size: 15px;
+        }
+
+        .card-value {
+            font-size: 22px;
+        }
+
+        .card {
+            padding: 16px 14px;
+        }
+    }
+</style>
+
+<div class="dashboard-container">
+    <div class="welcome-text">Welcome, {{ request.user.username }}!</div>
+
+    <div class="dashboard-cards">
+        <div class="card" style="animation-delay: 0.1s">
+            <div class="card-title">Total Menu Items</div>
+            <div class="card-value">{{ total_menu_items }}</div>
+        </div>
+
+        <div class="card" style="animation-delay: 0.2s">
+            <div class="card-title">Active Users</div>
+            <div class="card-value">{{ active_users }}</div>
+        </div>
+
+        <div class="card" style="animation-delay: 0.3s">
+            <div class="card-title">Restaurant Partners</div>
+            <div class="card-value">{{ total_restaurants }}</div>
+        </div>
+
+        <div class="card" style="animation-delay: 0.3s">
+            <div class="card-title">Total Donations</div>
+            <div class="card-value">₹{{ total_donations }}</div>
+        </div>
+
+        <div class="card" style="animation-delay: 0.4s">
+            <div class="card-title">Reviews</div>
+            <div class="card-value">{{ total_reviews }}</div>
+        </div>
+
+        <div class="card" style="animation-delay: 0.4s">
+            <div class="card-title">New Feedback</div>
+            <div class="card-value">{{ new_feedback }}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

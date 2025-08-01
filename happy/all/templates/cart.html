@@ -1,0 +1,389 @@
+{% load static %}
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Your Cart - Dmeal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0; padding: 30px;
+            font-size: 18px; /* base font larger */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            font-size: 3rem !important;
+            font-weight: 800;
+        }
+        .cart-container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px 50px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+            gap: 30px;
+        }
+        .cart-item img {
+            width: 140px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+        .cart-item-details {
+            flex-grow: 1;
+        }
+        .cart-item-details h3 {
+            margin: 0 0 10px;
+            color: #222;
+            font-size: 2rem !important;
+            font-weight: 700;
+        }
+        .cart-item-details p {
+            margin: 6px 0;
+            color: #555;
+            font-size: 1.3rem !important;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            margin-top: 12px;
+        }
+        .quantity-controls button {
+            width: 52px !important;
+            height: 52px !important;
+            font-size: 28px !important;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.2s ease;
+        }
+        .quantity-controls button:hover {
+            background-color: #ccc;
+        }
+        .quantity-controls input {
+            width: 80px !important;
+            text-align: center;
+            margin: 0 15px;
+            padding: 10px !important;
+            font-size: 22px !important;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        .item-total {
+            font-weight: bold;
+            color: #222;
+            margin-top: 10px;
+            font-size: 1.6rem !important;
+        }
+        .total {
+            text-align: right;
+            font-size: 32px !important;
+            margin-top: 40px;
+            color: #222;
+            font-weight: 900 !important;
+        }
+        .address-section {
+            margin-top: 40px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px !important;
+            padding: 18px !important;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 18px !important;
+            resize: vertical;
+        }
+        .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 20px 30px !important;
+            font-size: 22px !important;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            width: auto;
+            text-align: center;
+            font-weight: 700;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        .location-btn {
+            background-color: #007bff;
+            margin-top: 18px;
+            width: 100%;
+            max-width: 260px;
+            font-size: 20px !important;
+            padding: 18px 0 !important;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        .location-btn:hover {
+            background-color: #0056b3;
+        }
+        #delivery-time {
+            margin-top: 18px;
+            font-weight: 700;
+            font-size: 20px !important;
+            color: #444;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+                font-size: 16px;
+            }
+            .cart-container {
+                padding: 30px 40px;
+            }
+            .cart-item img {
+                width: 110px;
+                height: 90px;
+            }
+            .quantity-controls input {
+                width: 65px !important;
+                font-size: 18px !important;
+                margin: 0 10px;
+                padding: 8px !important;
+            }
+            .quantity-controls button {
+                width: 42px !important;
+                height: 42px !important;
+                font-size: 24px !important;
+            }
+            .cart-item-details h3 {
+                font-size: 1.8rem !important;
+            }
+            .cart-item-details p,
+            .item-total {
+                font-size: 1.2rem !important;
+            }
+            .total {
+                font-size: 28px !important;
+            }
+            textarea {
+                height: 130px !important;
+                font-size: 16px !important;
+                padding: 16px !important;
+            }
+            .btn, .location-btn {
+                font-size: 20px !important;
+                padding: 18px 28px !important;
+            }
+            #delivery-time {
+                font-size: 18px !important;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+                font-size: 15px;
+            }
+            .cart-container {
+                padding: 25px 30px;
+                border-radius: 10px;
+            }
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+            .cart-item img {
+                width: 100%;
+                height: auto;
+                border-radius: 12px;
+                margin-bottom: 15px;
+            }
+            .cart-item-details h3 {
+                font-size: 1.6rem !important;
+            }
+            .cart-item-details p,
+            .item-total {
+                font-size: 1.1rem !important;
+            }
+            .quantity-controls {
+                margin-top: 15px;
+            }
+            .quantity-controls button {
+                width: 38px !important;
+                height: 38px !important;
+                font-size: 22px !important;
+            }
+            .quantity-controls input {
+                width: 55px !important;
+                font-size: 18px !important;
+                padding: 6px !important;
+                margin: 0 8px !important;
+            }
+            .total {
+                font-size: 24px !important;
+            }
+            textarea {
+                font-size: 16px !important;
+                height: 120px !important;
+                padding: 14px !important;
+            }
+            .btn, .location-btn {
+                font-size: 18px !important;
+                padding: 16px 26px !important;
+                border-radius: 12px;
+            }
+            #delivery-time {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div class="cart-container">
+        <form method="post" action="{% url 'update_cart' %}" id="cartForm">
+            {% csrf_token %}
+            {% for item in cart %}
+                <div class="cart-item" data-item-id="{{ item.id }}" data-price="{{ item.price }}">
+                    <img src="{% static 'all/images/' %}{{ item.image }}" alt="{{ item.name }}" />
+                    <div class="cart-item-details">
+                        <h3>{{ item.name }}</h3>
+                        <p>Price: Rs. {{ item.price }}</p>
+
+                        <div class="quantity-controls">
+                            <button type="button" class="qty-btn" data-action="decrease" data-id="{{ item.id }}" aria-label="Decrease quantity">-</button>
+                            <input type="number" name="item_{{ item.id }}" id="qty-{{ item.id }}" value="{{ item.quantity }}" min="0" aria-label="Quantity for {{ item.name }}" />
+                            <button type="button" class="qty-btn" data-action="increase" data-id="{{ item.id }}" aria-label="Increase quantity">+</button>
+                        </div>
+
+                        <p class="item-total" id="total-{{ item.id }}">Total: Rs. {{ item.price|multiply:item.quantity|floatformat:2 }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="total" id="cart-total">
+                <strong>Total:</strong> Rs. {{ total|floatformat:2 }}
+            </div>
+
+            <div class="address-section">
+                <h3>Delivery Address</h3>
+                <textarea id="address" name="address" placeholder="Enter your delivery address or use your location..." oninput="updateDeliveryTime()" aria-label="Delivery address"></textarea>
+                <button type="button" class="btn location-btn" onclick="getLocation()">Use My Location</button>
+                <p id="delivery-time">Delivery Time: --</p>
+            </div>
+
+            <button type="submit" class="btn">Update Cart / Place Order</button>
+        </form>
+    </div>
+
+<script>
+    // Format number as currency with 2 decimals
+    function formatCurrency(num) {
+        return parseFloat(num).toFixed(2);
+    }
+
+    // Update item total and cart total on quantity change
+    function updateTotals() {
+        let cartItems = document.querySelectorAll('.cart-item');
+        let cartTotal = 0;
+        cartItems.forEach(item => {
+            const id = item.dataset.itemId;
+            const price = parseFloat(item.dataset.price);
+            const qtyInput = document.getElementById(`qty-${id}`);
+            let qty = parseInt(qtyInput.value) || 0;
+            if (qty < 0) qty = 0;
+            const itemTotal = price * qty;
+            cartTotal += itemTotal;
+            document.getElementById(`total-${id}`).innerText = `Total: Rs. ${formatCurrency(itemTotal)}`;
+            qtyInput.value = qty; // Clamp negative values to zero
+        });
+        document.getElementById('cart-total').innerHTML = `<strong>Total:</strong> Rs. ${formatCurrency(cartTotal)}`;
+    }
+
+    // Event delegation for + and - buttons
+    document.querySelectorAll('.qty-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const id = button.dataset.id;
+            const action = button.dataset.action;
+            const qtyInput = document.getElementById(`qty-${id}`);
+            let currentQty = parseInt(qtyInput.value) || 0;
+            if(action === 'increase') {
+                currentQty++;
+            } else if(action === 'decrease' && currentQty > 0) {
+                currentQty--;
+            }
+            qtyInput.value = currentQty;
+            updateTotals();
+        });
+    });
+
+    // Also update totals when quantity input changes manually
+    document.querySelectorAll('input[type="number"]').forEach(input => {
+        input.addEventListener('input', updateTotals);
+    });
+
+    // Update totals initially on page load
+    updateTotals();
+
+    // Delivery time logic based on address keywords
+    function updateDeliveryTime() {
+        const address = document.getElementById('address').value.toLowerCase();
+        const deliveryTimeElem = document.getElementById('delivery-time');
+
+        if(address.includes("downtown") || address.includes("city center")) {
+            deliveryTimeElem.innerText = "Delivery Time: 20-30 minutes";
+        } else if(address.includes("suburb") || address.includes("outskirts")) {
+            deliveryTimeElem.innerText = "Delivery Time: 40-60 minutes";
+        } else if(address.trim() === "") {
+            deliveryTimeElem.innerText = "Delivery Time: --";
+        } else {
+            deliveryTimeElem.innerText = "Delivery Time: 30-45 minutes";
+        }
+    }
+
+    // Geolocation to fetch address and update delivery time
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('address').value = data.display_name || '';
+                updateDeliveryTime();
+            })
+            .catch(() => {
+                alert("Unable to fetch location data.");
+            });
+    }
+
+    function showError(error) {
+        alert('Error getting location: ' + error.message);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Order Successful - Dmeal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e6ffe6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .message-box {
+            background: white;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,128,0,0.3);
+            text-align: center;
+        }
+        .message-box h1 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        .message-box p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .btn-home {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .btn-home:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <h1>🎉 Order Successful!</h1>
+        <p>Thank you for your order. We are processing it and will deliver soon.</p>
+        <a href="{% url 'menu_view' %}" class="btn-home">Back to Menu</a>
+    </div>
+</body>
+</html>

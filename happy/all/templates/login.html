@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login - Dmeal</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('https://codetheweb.blog/assets/img/posts/css-advanced-background-images/mountains.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-shadow: 0 0 7px rgba(0,0,0,0.8);
+  }
+
+  .container {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .welcome-text {
+    flex: 1 1 450px;
+    max-width: 480px;
+  }
+  .welcome-text h1 {
+    font-size: 4.5rem;
+    margin-bottom: 0.3em;
+    color: #ffb347;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.9);
+  }
+  .welcome-text h2 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin-bottom: 1em;
+    color: white;
+  }
+  .welcome-text p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    max-width: 420px;
+    color: white;
+  }
+
+  .login-box {
+    flex: 1 1 380px;
+    max-width: 400px;
+    background-image: url("{% static 'all/images/sun.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    padding: 35px 30px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .login-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .login-box form input[type="text"],
+  .login-box form input[type="password"],
+  .login-box form input[type="email"] {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    background-color: rgba(255 255 255 / 0.9);
+    color: #222;
+    box-sizing: border-box;
+  }
+
+  .login-box form input::placeholder {
+    color: #555;
+  }
+
+  .login-box form button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    background-color: #ffb347;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .login-box form button:hover {
+    background-color: #e69939;
+  }
+
+  .forgot-password {
+    text-align: right;
+    font-size: 0.9rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 0 0 3px rgba(0,0,0,0.7);
+  }
+
+  .forgot-password a {
+    color: #ffb347;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .forgot-password a:hover {
+    text-decoration: underline;
+  }
+
+  .register-link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+    text-shadow: 0 0 3px rgba(0,0,0,0.7);
+  }
+
+  .register-link a {
+    color: #ffb347;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .register-link a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 950px) {
+    .container {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .welcome-text, .login-box {
+      max-width: 100%;
+      flex: none;
+    }
+    .welcome-text h1 {
+      font-size: 3rem;
+    }
+    .welcome-text h2 {
+      font-size: 1.7rem;
+    }
+    .welcome-text p {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .login-box form input[type="text"],
+    .login-box form input[type="password"],
+    .login-box form input[type="email"],
+    .login-box form button {
+      font-size: 1rem;
+      padding: 12px 14px;
+    }
+    .login-box {
+      padding: 30px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="welcome-text">
+      <h2>Welcome To Dmeal Restaurant</h2>
+      <h1>Dmeal</h1>
+      <p>Dmeal helps you connect and share<br>with the people in your life.</p>
+    </div>
+
+    <div class="login-box">
+      <form method="post" novalidate>
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Enter your username" required />
+        <input type="password" name="password" placeholder="Enter your password" required />
+        <input type="email" name="email" placeholder="Enter your e-mail address" required />
+
+        <div class="forgot-password">
+          <a href="{% url 'password_reset' %}">Forgot password?</a>
+        </div>
+
+        <button type="submit">Login</button>
+      </form>
+
+      <div class="register-link">
+        Don't have an account? <a href="{% url 'register' %}">Register here</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

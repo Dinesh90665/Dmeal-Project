@@ -1,0 +1,14 @@
+{% extends "admin_base.html" %}
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+<h2>Confirm Delete</h2>
+
+<p>Are you sure you want to delete the restaurant: <strong>{{ restaurant.name }}</strong>?</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" style="background-color: #c0392b; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;">Yes, Delete</button>
+    <a href="{% url 'restaurant_list' %}" style="margin-left: 15px; color: #2980b9; text-decoration: none;">Cancel</a>
+</form>
+{% endblock %}

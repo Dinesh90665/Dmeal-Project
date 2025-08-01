@@ -1,0 +1,44 @@
+{% extends "admin_base.html" %}
+{% load static %}
+{% block title %}My Account{% endblock %}
+
+{% block content %}
+<h2>My Account</h2>
+
+<table style="max-width: 500px; border-collapse: collapse; width: 100%;">
+  <tr>
+    <th style="text-align:left; padding: 8px; border-bottom: 1px solid #ddd;">Field</th>
+    <th style="text-align:left; padding: 8px; border-bottom: 1px solid #ddd;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Username</td>
+    <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ request.user.username }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Email</td>
+    <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{ request.user.email }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Phone</td>
+    <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+      {{ user.profile.phone|default:"Not set" }}
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Address</td>
+    <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+      {{user.profile.address|default:"Not set" }}
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; border-bottom: 1px solid #ddd;">Profile Image</td>
+    <td style="padding: 8px; border-bottom: 1px solid #ddd;">
+      {% if profile.profile_image %}
+        <img src="{{ profile.profile_image.url }}" alt="Profile Image" style="width:120px; height:120px; border-radius: 50%; object-fit: cover;">
+      {% else %}
+        <img src="{% static 'default_profile.png' %}" alt="Default Profile" style="width:120px; height:120px; border-radius: 50%;">
+      {% endif %}
+    </td>
+  </tr>
+</table>
+{% endblock %}

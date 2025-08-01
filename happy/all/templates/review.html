@@ -1,0 +1,77 @@
+{% extends "admin_base.html" %}
+{% load static %}
+{% block title %}Reviews{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom: 15px;">User Reviews</h2>
+
+{% if rev %}
+<style>
+  .review-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+    justify-content: flex-start;
+  }
+
+  .review-card {
+    background: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    width: calc(50% - 20px); /* Two per row */
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .review-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .review-card h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: #2c3e50;
+  }
+
+  .review-card p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .review-actions {
+    margin-top: 10px;
+  }
+
+  .review-actions a {
+    font-size: 13px;
+    color: #c0392b;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .review-card {
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="review-grid">
+  {% for r in rev%}
+  <div class="review-card">
+    <h3>{{ r.designation }} {{ r.name }}</h3>
+    <p><strong>📞 Phone:</strong> {{ r.phone }}</p>
+    <p><strong>💬 Review:</strong><br>{{ r.review }}</p>
+    <p><strong>🕒 Submitted At:</strong> {{ r.submitted_at|date:"M d, Y H:i" }}</p>
+    <div class="review-actions">
+      <a href="{% url 'delete_review' r.id %}" onclick="return confirm('Are you sure you want to delete this review?')">🗑️ Delete</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p>No reviews submitted yet.</p>
+{% endif %}
+{% endblock %}

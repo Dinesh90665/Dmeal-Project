@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dmeal - Choose Your Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #0052D4, #4364F7, #6FB1FC);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        .container-box {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .btn-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-custom {
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            color: white;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .btn-wrapper {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .btn-custom {
+                width: 48%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-box">
+        <h2>Welcome to <strong>Dmeal</strong></h2>
+        <p>Choose your side to continue:</p>
+        <div class="btn-wrapper">
+            <a href="{% url 'admin_login' %}" class="btn btn-primary btn-custom">Admin Site</a>
+            <a href="{% url 'login' %}" class="btn btn-success btn-custom">User Side</a>
+        </div>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
