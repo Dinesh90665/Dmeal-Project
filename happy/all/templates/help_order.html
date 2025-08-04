@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Help with an Order - Dmeal</title>
+
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: orange;
+      color: white;
+      padding: 15px 20px;
+      font-size: 22px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .lang-select {
+      background: white;
+      color: black;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .section p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .lang-select {
+        margin-top: 10px;
+      }
+
+      .section h2 {
+        font-size: 20px;
+      }
+
+      .section p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div>Help with an Order</div>
+    <select class="lang-select" onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="np">नेपाली</option>
+      <option value="hi">हिन्दी</option>
+    </select>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Language-based Help Text -->
+    <div class="section" id="helpText">
+      <h2>How to Track or Modify Your Order</h2>
+      <p>
+        If you’ve placed an order and want to check its status, update delivery details, or report an issue,
+        follow the steps shown in the video below. For urgent concerns, please contact our support team.
+      </p>
+    </div>
+
+    <!-- Embedded MP4 Video -->
+    <div class="section">
+      <h2>Watch the Tutorial</h2>
+      <div class="video-wrapper">
+        <video controls>
+          <source src="{% static 'all/images/help_order.mp4' %}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Language Switch Script -->
+  <script>
+    function changeLanguage(lang) {
+      const helpText = document.getElementById("helpText");
+      if (lang === "np") {
+        helpText.innerHTML = `
+          <h2>अर्डर कसरी ट्र्याक वा परिवर्तन गर्ने</h2>
+          <p>
+            यदि तपाईंले अर्डर गर्नुभएको छ र स्थिति जाँच गर्न चाहनुहुन्छ वा डेलिभरी विवरण अपडेट गर्नु छ,
+            तलको भिडियो हेर्नुहोस्। तुरुन्त समस्या भएमा, हाम्रो सहायता टोलीलाई सम्पर्क गर्नुहोस्।
+          </p>
+        `;
+      } else if (lang === "hi") {
+        helpText.innerHTML = `
+          <h2>अपने ऑर्डर को कैसे ट्रैक या संशोधित करें</h2>
+          <p>
+            यदि आपने कोई ऑर्डर दिया है और उसकी स्थिति देखनी है या डिलीवरी जानकारी बदलनी है,
+            तो नीचे दिए गए वीडियो को देखें। किसी भी परेशानी के लिए हमारे सपोर्ट से संपर्क करें।
+          </p>
+        `;
+      } else {
+        helpText.innerHTML = `
+          <h2>How to Track or Modify Your Order</h2>
+          <p>
+            If you’ve placed an order and want to check its status, update delivery details, or report an issue,
+            follow the steps shown in the video below. For urgent concerns, please contact our support team.
+          </p>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

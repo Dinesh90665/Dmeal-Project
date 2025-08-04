@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Frequently Asked Questions - Dmeal</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f8f9fa;
+    }
+
+    .header {
+      background-color: orange;
+      color: white;
+      padding: 15px 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .faq-item {
+      background-color: white;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 15px 20px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff3e0;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 15px 20px;
+      background-color: #fff;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 600px) {
+      .faq-question {
+        font-size: 16px;
+      }
+
+      .faq-answer {
+        font-size: 14px;
+      }
+
+      .header {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">Help & Questions</div>
+
+  <div class="container">
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        How do I place an order?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        To place an order, browse the menu, add items to your cart, and then proceed to checkout. You can pay online or choose cash on delivery.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Can I cancel or modify my order?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        You can cancel or modify your order within 5 minutes of placing it. Go to your account orders section and select “Modify” or “Cancel”.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        What should I do if my food is delayed?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Sometimes delays happen due to traffic or weather. You can track your order in real-time from your dashboard or contact support.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Is my payment information secure?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        Yes, we use secure encryption and trusted gateways (eSewa, Fonepay) to ensure your data is safe.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        How can I contact customer support?
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        You can reach us via the chat button in the app or email us at <strong>support@dmeal.com</strong>. We're available 24/7.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleFaq(element) {
+      const item = element.parentElement;
+      item.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

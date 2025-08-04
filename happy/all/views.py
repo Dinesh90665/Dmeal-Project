@@ -682,11 +682,14 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def orders_items_list(request):
-    order_items = OrderItem.objects.all()
+    order_items = OrderItem.objects.select_related('order', 'menu_item__restaurant').all()
     return render(request, 'orders_items_list.html', {'order_items': order_items})
 
+def help_order(request):
+    return render(request, 'help_order.html')
 
-
+def question(request):
+    return render(request,'question.html')
 
 from django.shortcuts import render
 from all.models import MenuItem  # Adjust to your actual model

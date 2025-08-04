@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ restaurant.name }} - Dmeal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .restaurant-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .restaurant-header img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .restaurant-header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .restaurant-header p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    h2 {
+      margin-top: 40px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .menu-card h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+      color: #222;
+    }
+
+    .menu-card p {
+      margin: 0 0 10px;
+      color: #555;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .quantity-controls button {
+      padding: 6px 12px;
+      font-size: 16px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .quantity-controls input {
+      width: 40px;
+      text-align: center;
+      font-size: 16px;
+      margin: 0 10px;
+    }
+
+    .submit-button {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .restaurant-header h1 {
+        font-size: 24px;
+      }
+
+      .menu-card img {
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="restaurant-header">
+  <img src="{% static 'all/images/' %}{{ restaurant.image }}" alt="{{ restaurant.name }}">
+  <h1>{{ restaurant.name }}</h1>
+  <p><strong>Place:</strong> {{ restaurant.place }}</p>
+  <p><strong>Facility:</strong> {{ restaurant.facility }}</p>
+  <p>{{ restaurant.description }}</p>
+</div>
+
+<h2>Choose Your Items</h2>
+
+<form method="POST" action="{% url 'add_to_cart' %}">
+  {% csrf_token %}
+  <div class="menu-grid">
+    {% for item in menu_items %}
+      <div class="menu-card">
+        <img src="{% static 'all/images/' %}{{ item.image }}" alt="{{ item.name }}">
+        <h3>{{ item.name }}</h3>
+        <p>₹{{ item.price }}</p>
+
+        <div class="quantity-controls">
+          <button type="button" onclick="decreaseQty('{{ item.id }}')">−</button>
+          <input type="number" name="item_{{ item.id }}" id="qty_{{ item.id }}" value="0" min="0">
+          <button type="button" onclick="increaseQty('{{ item.id }}')">+</button>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <input type="submit" value="Add to Cart" class="submit-button">
+</form>
+
+<script>
+  function increaseQty(id) {
+    const qtyInput = document.getElementById('qty_' + id);
+    qtyInput.value = parseInt(qtyInput.value || 0) + 1;
+  }
+
+  function decreaseQty(id) {
+    const qtyInput = document.getElementById('qty_' + id);
+    if (parseInt(qtyInput.value) > 0) {
+      qtyInput.value = parseInt(qtyInput.value) - 1;
+    }
+  }
+</script>
+
+</body>
+</html>

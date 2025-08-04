@@ -12,6 +12,7 @@
             <th style="padding: 10px;">Food</th>
             <th style="padding: 10px;">Quantity</th>
             <th style="padding: 10px;">Price</th>
+             <th style="padding: 10px;">Restaurant</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
             <td style="padding: 10px;">{{ item.menu_item.name }}</td>
             <td style="padding: 10px;">{{ item.quantity }}</td>
             <td style="padding: 10px;">₹{{ item.price }}</td>
+            <td style="padding: 10px;">₹{{ item.menu_item.restaurant.name }}</td>
         </tr>
         {% empty %}
         <tr>

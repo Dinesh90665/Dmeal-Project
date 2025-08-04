@@ -88,7 +88,7 @@
 <h1>Select a Restaurant</h1>
 <div class="restaurant-grid">
   {% for r in restaurants %}
-  {% comment %} <a href="{% url 'restaurant_detail' r.id %}" style="text-decoration: none; color: inherit;"> {% endcomment %}
+  <a href="{% url 'restaurant_detail' r.id %}" style="text-decoration: none; color: inherit;">
     <div class="restaurant-card">
       <div class="restaurant-image">
         <img src="{% static 'all/images/' %}{{ r.image }}" alt="{{ r.name }}">

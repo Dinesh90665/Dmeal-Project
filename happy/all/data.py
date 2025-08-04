@@ -1,165 +1,4 @@
 
-from .models import MenuItem
-menu_items = [
-    {
-        "id": 1,
-        "name": "Margherita Pizza",
-        "description": "Classic cheese and tomato pizza",
-        "price": 249,
-        "image": "pizza.jpg"
-    },
-    {
-        "id": 2,
-        "name": "Chicken Burger",
-        "description": "Juicy chicken patty with lettuce and mayo",
-        "price": 199,
-        "image": "burger.jpg"
-    },
-    {
-        "id": 3,
-        "name": "Veggie Wrap",
-        "description": "Healthy wrap filled with fresh vegetables",
-        "price": 179,
-        "image": "wrap.jpg"
-    },
-    {
-        "id": 4,
-        "name": "Grilled Sandwich",
-        "description": "Grilled to perfection with cheese and tomato",
-        "price": 159,
-        "image": "sandwich.jpg"
-    },
-    {
-        "id": 5,
-        "name": "Momos",
-        "description": "Steamed dumplings with spicy sauce",
-        "price": 129,
-        "image": "momos.jpg"
-    },
-    {
-        "id": 6,
-        "name": "Pasta Alfredo",
-        "description": "Creamy white sauce pasta",
-        "price": 229,
-        "image": "pasta.jpg"
-    },
-    {
-        "id": 7,
-        "name": "Biryani",
-        "description": "Spiced rice with chicken and herbs",
-        "price": 279,
-        "image": "biryani.jpg"
-    },
-    {
-        "id": 8,
-        "name": "French Fries",
-        "description": "Crispy golden potato fries",
-        "price": 99,
-        "image": "fres.jpg"
-    },
-    {
-        "id": 9,
-        "name": "Chocolate Shake",
-        "description": "Rich and creamy chocolate milkshake",
-        "price": 149,
-        "image": "shake.jpg"
-    },
-    {
-        "id": 10,
-        "name": "Caesar Salad",
-        "description": "Fresh lettuce, cheese, and croutons",
-        "price": 189,
-        "image": "salad.jpg"
-    },
-    {
-        "id": 11,
-        "name": "Spring Rolls",
-        "description": "Crispy vegetable spring rolls",
-        "price": 119,
-        "image": "spring_rolls.jpg"
-    },
-    {
-        "id": 12,
-        "name": "Paneer Tikka",
-        "description": "Grilled paneer cubes marinated in spices",
-        "price": 239,
-        "image": "paneer.jpg"
-    },
-    {
-        "id": 13,
-        "name": "Fish Curry",
-        "description": "Spicy and tangy fish curry with rice",
-        "price": 299,
-        "image": "fish_curry.jpg"
-    },
-    {
-        "id": 14,
-        "name": "Egg Roll",
-        "description": "Stuffed egg roll with onions and chutney",
-        "price": 139,
-        "image": "egg_roll.jpg"
-    },
-    {
-        "id": 15,
-        "name": "Ice Cream Sundae",
-        "description": "Vanilla ice cream with chocolate toppings",
-        "price": 109,
-        "image": "icecream.jpg"
-    },
-    {
-        "id": 16,
-        "name": "Daal Bhat",
-        "description": "Nepali-style lentils and rice",
-        "price": 149,
-        "image": "daalbhat.jpg"
-    },
-    {
-        "id": 17,
-        "name": "Samosa",
-        "description": "Spiced potato-filled fried snack",
-        "price": 49,
-        "image": "samosa.jpg"
-    },
-    {
-        "id": 18,
-        "name": "Masala Dosa",
-        "description": "South Indian crepe stuffed with potato",
-        "price": 189,
-        "image": "dosa.jpg"
-    },
-    {
-        "id": 19,
-        "name": "Chowmein",
-        "description": "Stir-fried noodles with vegetables",
-        "price": 159,
-        "image": "chowein.jpg"
-    },
-    {
-        "id": 20,
-        "name": "Thukpa",
-        "description": "Tibetan noodle soup",
-        "price": 169,
-        "image": "thukpa.jpg"
-    }
-
-]
-
-
-def insert_menu_items():
-    for item in menu_items:
-        MenuItem.objects.update_or_create(
-            id=item['id'],
-            defaults={
-                'name': item['name'],
-                'description': item['description'],
-                'price': item['price'],
-                'image': item['image'],
-            }
-        )
-
-
-
-
 from .models import Restaurant
 restaurants = [
     {
@@ -322,12 +161,13 @@ restaurants = [
         "place": "Lalitpur",
         "facility": "Reservation Required, Premium Menu"
     },
+
 ]
 
 
 def insert_restaurants():
     for r in restaurants:
-        MenuItem.objects.update_or_create(
+        Restaurant.objects.update_or_create(
             id=r['id'],
             defaults={
                 'name': r['name'],
@@ -337,3 +177,232 @@ def insert_restaurants():
                 'image': r['image'],
             }
         )
+
+
+        
+
+
+from .models import MenuItem
+menu_items = [
+     
+    {
+        "id": 1,
+        "name": "Margherita Pizza",
+        "description": "Classic cheese and tomato pizza",
+        "price": 249,
+        "image": "pizza.jpg",
+        "restaurant_name": "Spice Garden"
+    }, 
+    {
+        "id": 2,
+        "name": "Chicken Burger",
+        "description": "Juicy chicken patty with lettuce and mayo",
+        "price": 199,
+        "image": "burger.jpg",
+         "restaurant_name": "Mountain View Grill"
+    },
+    {
+        "id": 3,
+        "name": "Veggie Wrap",
+        "description": "Healthy wrap filled with fresh vegetables",
+        "price": 179,
+        "image": "wrap.jpg",
+         "restaurant_name": "Urban Bites"
+    },
+    {
+        "id": 4,
+        "name": "Grilled Sandwich",
+        "description": "Grilled to perfection with cheese and tomato",
+        "price": 159,
+        "image": "sandwich.jpg",
+         "restaurant_name": "Everest Fusion"
+    },
+    {
+        "id": 5,
+        "name": "Momos",
+        "description": "Steamed dumplings with spicy sauce",
+        "price": 129,
+        "image": "momos.jpg",
+          "restaurant_name": "The Bamboo House"
+    },
+    {
+        "id": 6,
+        "name": "Pasta Alfredo",
+        "description": "Creamy white sauce pasta",
+        "price": 229,
+        "image": "pasta.jpg",
+        "restaurant_name": "Chilly Chops"
+    },
+    {
+        "id": 7,
+        "name": "Biryani",
+        "description": "Spiced rice with chicken and herbs",
+        "price": 279,
+        "image": "biryani.jpg",
+        "restaurant_name": "Lumbini Veg Plaza"
+    },
+    {
+        "id": 8,
+        "name": "French Fries",
+        "description": "Crispy golden potato fries",
+        "price": 99,
+        "image": "fres.jpg",
+          "restaurant_name": "Sunset Dine"
+    },
+    {
+        "id": 9,
+        "name": "Chocolate Shake",
+        "description": "Rich and creamy chocolate milkshake",
+        "price": 149,
+        "image": "shake.jpg",
+         "restaurant_name": "Dine & Shine"
+    },
+    {
+        "id": 10,
+        "name": "Caesar Salad",
+        "description": "Fresh lettuce, cheese, and croutons",
+        "price": 189,
+        "image": "salad.jpg",
+         "restaurant_name": "Quick Bite Express"
+    },
+    {
+        "id": 11,
+        "name": "Spring Rolls",
+        "description": "Crispy vegetable spring rolls",
+        "price": 119,
+        "image": "spring_rolls.jpg",
+         "restaurant_name": "Himalayan Deli"
+    },
+    {
+        "id": 12,
+        "name": "Paneer Tikka",
+        "description": "Grilled paneer cubes marinated in spices",
+        "price": 239,
+        "image": "paneer.jpg",
+          "restaurant_name": "The Hungry Yak"
+    },
+    {
+        "id": 13,
+        "name": "Fish Curry",
+        "description": "Spicy and tangy fish curry with rice",
+        "price": 299,
+        "image": "fish_curry.jpg",
+        "restaurant_name": "Nepa Food Hub"
+    },
+    {
+        "id": 14,
+        "name": "Egg Roll",
+        "description": "Stuffed egg roll with onions and chutney",
+        "price": 139,
+        "image": "egg_roll.jpg",
+         "restaurant_name": "Blue Moon Café"
+    },
+    {
+        "id": 15,
+        "name": "Ice Cream Sundae",
+        "description": "Vanilla ice cream with chocolate toppings",
+        "price": 109,
+        "image": "icecream.jpg",
+          "restaurant_name": "Tandoori Flames"
+    },
+    {
+        "id": 16,
+        "name": "Daal Bhat",
+        "description": "Nepali-style lentils and rice",
+        "price": 149,
+        "image": "daalbhat.jpg",
+        "restaurant_name": "Frozen Spoon"
+    },
+    {
+        "id": 17,
+        "name": "Samosa",
+        "description": "Spiced potato-filled fried snack",
+        "price": 49,
+        "image": "samosa.jpg",
+        "restaurant_name": "Spice Garden"
+    },
+    {
+        "id": 18,
+        "name": "Masala Dosa",
+        "description": "South Indian crepe stuffed with potato",
+        "price": 189,
+        "image": "dosa.jpg",
+            "restaurant_name": "Spice Garden"
+    },
+    {
+        "id": 19,
+        "name": "Chowmein",
+        "description": "Stir-fried noodles with vegetables",
+        "price": 159,
+        "image": "chowein.jpg",
+             "restaurant_name": "Spice Garden"
+    },
+    {
+        "id": 20,
+        "name": "Thukpa",
+        "description": "Tibetan noodle soup",
+        "price": 169,
+        "image": "thukpa.jpg",
+        "restaurant_name": "Spice Garden"
+    },
+
+    {
+        "id": 21,
+        "name": "aalu",
+        "description": " noodle soup",
+        "price": 200,
+        "image": "pe_1.jpg",
+        "restaurant_name": "Spice Garden"
+    },
+    {
+        "id": 22,
+        "name": "bhat",
+        "description": " meat soup",
+        "price": 210,
+        "image": "pe_2.jpg",
+        "restaurant_name": "Spice Garden"
+    },
+    {
+        "id": 23,
+        "name": "meat curry",
+        "description": " good soup",
+        "price": 230,
+        "image": "pe_3.jpg",
+        "restaurant_name": "Spice Garden"
+    },
+    {
+        "id": 24,
+        "name": "frying",
+        "description": "nice bhat",
+        "price": 260,
+        "image": "pe_8.jpg",
+        "restaurant_name": "Spice Garden"
+    },
+{
+        "id": 25,
+        "name": "mix",
+        "description": "nice",
+        "price": 250,
+        "image": "pe_6.jpg",
+        "restaurant_name": "Spice Garden"
+    },
+]
+
+
+def insert_menu_items():
+    for item in menu_items:
+        try:
+            restaurant = Restaurant.objects.get(name=item['restaurant_name'])
+            MenuItem.objects.update_or_create(
+                name=item['name'],
+                restaurant=restaurant,
+                defaults={
+                    'price': item['price'],
+                    'description': item['description'],
+                    'image': item['image'],
+                }
+            )
+        except Restaurant.DoesNotExist:
+            print(f"❌ Restaurant not found: {item['restaurant_name']}")
+    print("✅ Menu items inserted or updated.")
+

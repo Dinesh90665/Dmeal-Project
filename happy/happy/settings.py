@@ -25,7 +25,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'happy.settings')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['2fcd3213b2dd.ngrok-free.app','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['c0600f55c9e0.ngrok-free.app','localhost','127.0.0.1']
 
 
 # Application definition
@@ -123,7 +123,7 @@ USE_I18N = True
 USE_TZ = True
 
 CSRF_TRUSTED_ORIGINS = [
-     "https://2fcd3213b2dd.ngrok-free.app",
+     "https://c0600f55c9e0.ngrok-free.app",
 ]
 
 
@@ -142,7 +142,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'dineshayadi584@gmail.com'
-EMAIL_HOST_PASSWORD = 'poikeoympagzycxu'  # your actual app password
+EMAIL_HOST_PASSWORD = 'zoeytimuqxorugeh'  # your actual app password
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 

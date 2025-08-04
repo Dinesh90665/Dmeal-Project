@@ -75,6 +75,10 @@ path('log',views.log,name='log'),
 
  path('feedback_success', views.feedback_success, name='feedback_success'),
 
+path('help_order/', views.help_order, name='help_order'),
+
+path('question/', views.question,name="question"),
+
  path('donate', views.donate_view, name='donate'),
     path('thank_you', views.thank_you_view, name='thank_you'),
     path('edit_profile',views.edit_profile,name='edit_profile.html'),

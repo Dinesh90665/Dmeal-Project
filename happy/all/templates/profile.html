@@ -198,6 +198,35 @@
     </div>
   </div>
 
+  <!-- Customer Service -->
+<div class="section-card">
+  <div class="section-item" id="customerServiceToggle">
+    <div class="section-icon"><i class="fas fa-headset"></i></div>
+    <div class="section-text">Customer Service</div>
+    <div class="arrow-right" id="customerServiceArrow">&gt;</div>
+  </div>
+  <div class="sub-items" id="customerServiceSubs">
+    <div class="section-item sub-item" onclick="window.location.href='{% url 'contacts' %}'">
+      <div class="section-icon"><i class="fas fa-envelope"></i></div>
+      <div class="section-text">Contact Support</div>
+      <div class="arrow-right">&gt;</div>
+    </div>
+    <div class="section-item sub-item" onclick="window.location.href='{% url 'help_order' %}'">
+      <div class="section-icon"><i class="fas fa-box-open"></i></div>
+      <div class="section-text">Help with an Order</div>
+      <div class="arrow-right">&gt;</div>
+    </div>
+    <div class="section-item sub-item" onclick="window.location.href='{% url 'question' %}'">
+      <div class="section-icon"><i class="fas fa-question-circle"></i></div>
+      <div class="section-text">FAQs</div>
+      <div class="arrow-right">&gt;</div>
+    </div>
+  </div>
+</div>
+
+
+  
+
   <!-- More -->
   <div class="section-header">More</div>
   <div class="section-card">
@@ -246,6 +275,9 @@
 
   document.getElementById('dmealEnterprisesToggle').addEventListener('click', () =>
     toggleSection('dmealEnterprisesToggle', 'dmealEnterprisesSubs', 'dmealEnterprisesArrow')
+  );
+  document.getElementById('customerServiceToggle').addEventListener('click',()=>
+  toggleSection('customerServiceToggle','customerServiceSubs','customerServiceArrow')
   );
 </script>
 {% endblock %}
