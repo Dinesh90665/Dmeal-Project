@@ -25,7 +25,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'happy.settings')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['c0600f55c9e0.ngrok-free.app','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['44066f8ad0f7.ngrok-free.app','localhost','127.0.0.1']
 
 
 # Application definition
@@ -123,7 +123,7 @@ USE_I18N = True
 USE_TZ = True
 
 CSRF_TRUSTED_ORIGINS = [
-     "https://c0600f55c9e0.ngrok-free.app",
+     "https://44066f8ad0f7.ngrok-free.app",
 ]
 
 
