@@ -95,8 +95,7 @@ The app is fully mobile responsive, ensuring smooth usability across desktops, t
  
 
 Screenshots 
-
- ## 📸 Screenshots
+## 📸 Screenshots
 
 <table>
   <tr>
@@ -130,6 +129,30 @@ Screenshots
     <td colspan="2" align="center">Screenshot 7</td>
   </tr>
 </table>
+
+---
+
+## 🫱 How to Donate
+
+<table>
+  <tr>
+    <td><img src="happy/all/static/all/images/save_8.png" width="220"/></td>
+    <td><img src="happy/all/static/all/images/save_12.png" width="220"/></td>
+  </tr>
+  <tr>
+    <td align="center">Donation Step 1</td>
+    <td align="center">Donation Step 2</td>
+  </tr>
+  <tr>
+    <td><img src="happy/all/static/all/images/save_13.png" width="220"/></td>
+    <td><img src="happy/all/static/all/images/save_14.png" width="220"/></td>
+  </tr>
+  <tr>
+    <td align="center">Donation Step 3</td>
+    <td align="center">Donation Step 4</td>
+  </tr>
+</table>
+
 
 
  Deployment 
